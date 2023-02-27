@@ -1,4 +1,5 @@
-import Home from './Home'
-import Create from './Create'
+import Cards from './Cards';
+import Forms from './Forms';
+import Loader from './Loader';
 
-export { Home, Create }
+export { Cards, Forms, Loader }

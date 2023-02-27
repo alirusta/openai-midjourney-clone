@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { logo } from './assets'
-import { Home, Create } from './components'
+import { Home, Create } from './pages'
 
 const App = () => {
   return (
