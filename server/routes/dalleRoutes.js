@@ -14,7 +14,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-router.route('/').get((req, res) => {
+router.route('/').get((_, res) => {
     res.send('Beep, boop, Dall-E routes just fine. 🤖');
 });
 

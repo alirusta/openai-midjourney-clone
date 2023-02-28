@@ -5,7 +5,9 @@ import { Cards, Forms, Loader} from '../components';
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState(null);
-  const [searchText, setsearchText] = useState('');
+  const [searchText, setSearchText] = useState('');
+  const [searchedResults, setSearchedResults] = useState(null);
+  const [searchTimeout, setSearchTimeout] = useState(null);
 
   // get routes from backend:
   useEffect(() => {
@@ -39,6 +41,21 @@ const Home = () => {
     fetchPosts();
   }, []);
 
+  // implement search:
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+    
+    setSearchTimeout(
+      setTimeout(() => {
+        const searchResults = allPosts.filter((item) =>
+          item.name.toLowerCase().includes(searchText.toLowerCase()) ||
+          item.prompt.toLowerCase().includes(searchText.toLowerCase()));
+  
+        setSearchedResults(searchResults);
+      }, 500)
+    );
+  };
+
   // if data > 0, map it and render cards while passing all post data to each card:
   const CreateCards = ({data, title}) => {
     if (data?.length > 0) {
@@ -65,7 +82,8 @@ const Home = () => {
       </div>
 
       <div className='mt-16'>
-        <Forms />
+        <Forms labelName='Search posts' type='text' name='text' placeholder='Search posts'
+                value={searchText} handleChange={handleSearchChange} />
       </div>
 
       <div className='mt-10'>
@@ -85,7 +103,7 @@ const Home = () => {
 
             <div className='grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3'>
               {searchText ? (
-                <CreateCards data={allPosts} title='No search results found'/>
+                <CreateCards data={searchedResults} title='No search results found'/>
               ) : (
                 <CreateCards data={allPosts} title='No posts found'/>
               )}
