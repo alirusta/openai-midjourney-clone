@@ -12,7 +12,7 @@ export function random_PP (prompt) {
     return random_P
 };
 
-// this together with file-saver to enable download:
+// this together with file-saver to enable direct image download:
 export async function downloadImage(_id, photo) {
     FileSaver.saveAs(photo, `download-${_id}.jpg`);
 };

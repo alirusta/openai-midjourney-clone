@@ -4,7 +4,7 @@ const Forms = ({ labelName, type, name, placeholder, value, handleChange, isRand
   return (
     <div>
         <div className='flex items-center gap-2 mb-2'>
-            <label htmlFor={name} className='block text-sm font-medium text-gray-900'>
+            <label htmlFor={name} className='block text-md font-medium text-[#c1c1c1]'>
                 {labelName}
             </label>
 

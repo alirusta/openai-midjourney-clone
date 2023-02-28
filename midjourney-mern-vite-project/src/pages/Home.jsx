@@ -64,7 +64,7 @@ const Home = () => {
 
     // else just return the title:
     return (
-      <h2 className='mt-5 font-bold text-[#6449ff] text-xl uppercase'>
+      <h2 className='mt-5 font-bold text-rose-500 text-2xl uppercase'>
         {title}
       </h2>
     )
@@ -73,10 +73,10 @@ const Home = () => {
   return (
     <section className='max-w-7xl mx-auto'>
       <div>
-        <h1 className='font-extrabold text-[32px] text-[#222328]'>
+        <h1 className='font-extrabold text-[32px] text-[#c1c1c1]'>
           Share your findings 👾
         </h1>
-        <p className='mt-5 text-[#666e75] text-[14px] max-w-[600px]'>
+        <p className='mt-5 text-[#d8d8d8] text-[14px] max-w-[600px]'>
           View other user prompt results on this collective imageboard. Add yours for others to see!
         </p>
       </div>

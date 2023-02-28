@@ -94,10 +94,10 @@ const Create = () => {
   return (
     <section className='max-w-7xl mx-auto'>
       <div>
-        <h1 className='font-extrabold text-[32px] text-[#222328]'>
-          Create 💦
+        <h1 className='font-extrabold text-[36px] text-[#c1c1c1]'>
+          Create something amazing 💦
         </h1>
-        <p className='mt-5 text-[#666e75] text-[14px] max-w-[600px]'>
+        <p className='mt-5 text-[#d8d8d8] text-[16px] max-w-[650px]'>
         Utilize the capabilities of DALL-E AI to produce captivating and imaginative visuals.
         </p>
       </div>
@@ -135,18 +135,18 @@ const Create = () => {
 
         <div className='mt-5 flex gap-5'>
             <button type='button' onClick={generateImage}
-                    className='text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-[256.5px] px-5 py-2.5 text-center'>
+                    className='text-white bg-pink-600 hover:bg-pink-500 active:bg-pink-700 font-medium rounded-md text-md w-full sm:w-[256.5px] px-5 py-2.5 text-center'>
               {genImage ? 'Magic in progress...' : 'Generate 🎨'}
             </button>
         </div>
 
         <div className='mt-10'>
-          <p className='mt-2 text-[#666e75] text-[14px]'>
+          <p className='mt-2 text-[#d8d8d8] text-[14px]'>
             Exchange your discoveries with other Dall-E enthusiasts on our imageboard.
           </p>
 
           <button type='submit'
-                  className='mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-[502px] px-5 py-2.5 text-center'>
+                  className='mt-3 text-white bg-[#6964ff] hover:bg-[#7e79ff] active:bg-[#453fff] font-medium rounded-md text-md w-full sm:w-[502px] px-5 py-2.5 text-center'>
             {loading ? 'Even more magic in progress...' : 'Share with us 💖'}  
           </button>
         </div>

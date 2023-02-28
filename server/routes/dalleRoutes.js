@@ -20,7 +20,9 @@ router.route('/').get((_, res) => {
 
 // call OpenAIApi and return user prompted image:
 router.route('/').post(async (req, res) => {
+    
     try {
+
         // bring prompt from frontend:
         const { prompt } = req.body; 
 
@@ -37,6 +39,7 @@ router.route('/').post(async (req, res) => {
 
         // send extracted image to frontend:
         res.status(200).json({ photo: image });
+
     } catch (error) {
         console.log(error);
         res.status(500).send(error?.response.data.error.message);
