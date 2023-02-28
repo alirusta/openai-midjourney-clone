@@ -7,6 +7,38 @@ const Home = () => {
   const [allPosts, setAllPosts] = useState(null);
   const [searchText, setsearchText] = useState('');
 
+  // get routes from backend:
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+
+      try {
+        const response = await fetch('http://localhost:6969/api/v1/post', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+
+        // check for good response:
+        if (response.ok) {
+          const result = await response.json();
+
+          // reverse to show latest posts first:
+          setAllPosts(result.data.reverse());
+        }
+
+      } catch (error) {
+        alert(error);
+
+      } finally {
+        setLoading(false);
+      };
+    };
+
+    fetchPosts();
+  }, []);
+
   // if data > 0, map it and render cards while passing all post data to each card:
   const CreateCards = ({data, title}) => {
     if (data?.length > 0) {
@@ -53,9 +85,9 @@ const Home = () => {
 
             <div className='grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3'>
               {searchText ? (
-                <CreateCards data={[]} title='No search results found'/>
+                <CreateCards data={allPosts} title='No search results found'/>
               ) : (
-                <CreateCards data={[]} title='No posts found'/>
+                <CreateCards data={allPosts} title='No posts found'/>
               )}
             </div>
           </>

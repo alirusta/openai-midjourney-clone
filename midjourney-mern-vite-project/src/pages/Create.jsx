@@ -6,16 +6,18 @@ import { Forms, Loader } from '../components';
 
 const Create = () => {
   const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: '',
     prompt: '',
-    photo: '',
+    photo: ''
   });
+
   const [genImage, setGenImage] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // setup try/fetch:
-  const generateImage = async() => {
+  // setup dalle try/fetch:
+  const generateImage = async () => {
     if (form.prompt) {
 
       try {
@@ -24,13 +26,11 @@ const Create = () => {
         const response = await fetch('http://localhost:6969/api/v1/dalle', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
           },
+          body: JSON.stringify({ prompt: form.prompt })
+        })
 
-          body: JSON.stringify({ prompt: form.prompt }),
-        });
-
-        // test:
         const data = await response.json();
 
         // save & render fetched image:
@@ -48,8 +48,38 @@ const Create = () => {
     };
   };
 
-  const handleSubmit = () => {
+  // setup post try/fetch:
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    if (form.prompt && form.photo) {
+      setLoading(true);
+
+      try {
+        const response = await fetch('http://localhost:6969/api/v1/post', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          // created posts from postRoutes (line 39):
+          body: JSON.stringify(form)
+        });
+
+        await response.json();
+
+        // go back to home to see created post:
+        navigate('/');
+
+      } catch (err) {
+        alert(err);
+
+      } finally {
+        setLoading(false);
+      };
+
+    } else {
+      alert('No prompt, no magic. 💀');
+    };
   };
 
   const handleChange = (e) => {

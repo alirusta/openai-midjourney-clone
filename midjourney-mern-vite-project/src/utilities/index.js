@@ -1,3 +1,4 @@
+import FileSaver from 'file-saver';
 import { presetPrompts } from '../presets/presets';
 
 // get a random preset prompt:
@@ -9,4 +10,9 @@ export function random_PP (prompt) {
     if (random_P === prompt) return random_PP(prompt);
 
     return random_P
+};
+
+// this together with file-saver to enable download:
+export async function downloadImage(_id, photo) {
+    FileSaver.saveAs(photo, `download-${_id}.jpg`);
 };
