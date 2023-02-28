@@ -11,7 +11,7 @@ const Forms = ({ labelName, type, name, placeholder, value, handleChange, isRand
             {isRandom_PP && (
                 <button type='button' onClick={handleRandom_PP}
                         className='font-semibold text-xs bg-[#ececf1] py-1 px-2 rounded-[5px] text-black'>
-                    Let There Be Magic✨
+                    Let There Be Magic ✨
                 </button>
             )}
         </div>
